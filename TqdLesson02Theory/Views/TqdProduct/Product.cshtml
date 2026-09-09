@@ -1,0 +1,25 @@
+
+@{
+    ViewData["Title"] = "Thông tin sản phẩm";
+}
+
+<h1>@ViewData["Title"] </h1>
+
+@{
+    TqdProduct product = ViewData["product"] as TqdLesson02Theory.Models.TqdProduct;
+}
+<div class="alert alert-danger">
+    <h2>Dữ liệu lấy từ ViewData</h2>
+    <p>Mã sản phẩm: @product.ProductID </p>
+    <p>Tên sản phẩm: @product.ProductName</p>
+    <p>Năm  SX: @product.YearRelease</p>
+    <p>Giá: @product.Price</p>
+</div>
+
+<div class="alert alert-info">
+    <h2>Dữ liệu  lấy từ ViewBag</h2>
+    <p>Mã sản phẩm: @ViewBag.product.ProductID</p>
+    <p>Tên sản phẩm: @ViewBag.product.ProductName</p>
+    <p>Năm  SX: @ViewBag.product.YearRelease</p>
+    <p>Giá: @ViewBag.product.Price</p>
+</div>

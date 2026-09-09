@@ -1,0 +1,43 @@
+
+@{
+    ViewData["Title"] = "Profile";
+
+    var profile = ViewBag.TqdAccount as TqdAccount;
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="border p-5">
+            <img src="@profile.Avatar" alt="@profile.Name" class="w-100" />
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card p-5">
+            <h3>FullName: @profile.Name</h3>
+            <p>Email: @profile.Email</p>
+            <p>Address: @profile.Address</p>
+            <p>Phone: @profile.Phone</p>
+            <p>Bio: @profile.Bio</p>
+            <p>Gender:
+                @if (profile.Gender == 1)
+                {
+                    <text>Nam</text>
+                }
+                else
+                {
+                    <text>Nữ</text>
+                }
+
+            </p>
+            <p>Birthday: @profile.Birthday</p>
+
+            <p>
+                <a asp-asp-controller="TqdAccount" asp-action="TqdIndex" class="btn  btn-danger">
+                    Back to list
+                </a>
+            </p>
+        </div>
+
+    </div>
+</div>
+

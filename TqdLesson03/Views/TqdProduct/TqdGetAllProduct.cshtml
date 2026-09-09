@@ -1,0 +1,45 @@
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+
+    var products = ViewData["products"] as List<TqdLesson03.Models.TqdProduct>;
+}
+<div class="card">
+    <div class="card-header">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in products)
+                {
+                    <tr>
+                        <td>@item.TqdProductId</td>
+                        <td>@item.TqdProductName</td>
+                        <td>@item.TqdYearRelease</td>
+                        <td>@item.TqdPrice</td>
+                        <td>
+                            <a href="#" class="btn btn-info">Xem chi tiết</a>
+                            <a href="#" class="btn btn-primary">Sửa</a>
+                            <a href="#" class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="5">Tổng số sản phẩm: @products.Count</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

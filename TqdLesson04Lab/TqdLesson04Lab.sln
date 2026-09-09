@@ -1,0 +1,25 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TqdLesson04Lab", "TqdLesson04Lab.csproj", "{46829E4E-2CC2-46A3-BA31-57EA9761639D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46829E4E-2CC2-46A3-BA31-57EA9761639D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46829E4E-2CC2-46A3-BA31-57EA9761639D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46829E4E-2CC2-46A3-BA31-57EA9761639D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46829E4E-2CC2-46A3-BA31-57EA9761639D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F89E24C9-2C74-4F85-85A1-A5D665627B11}
+	EndGlobalSection
+EndGlobal

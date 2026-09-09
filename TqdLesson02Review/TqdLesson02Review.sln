@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TqdLesson02Review", "TqdLesson02Review.csproj", "{CC1D4D7E-F2C2-48E2-8347-6CCB82C3749C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TqdLesson02Theory", "..\TqdLesson02Theory\TqdLesson02Theory.csproj", "{498F8020-9B22-4F6B-8920-DDC79E66F65F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC1D4D7E-F2C2-48E2-8347-6CCB82C3749C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1D4D7E-F2C2-48E2-8347-6CCB82C3749C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1D4D7E-F2C2-48E2-8347-6CCB82C3749C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1D4D7E-F2C2-48E2-8347-6CCB82C3749C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498F8020-9B22-4F6B-8920-DDC79E66F65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498F8020-9B22-4F6B-8920-DDC79E66F65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498F8020-9B22-4F6B-8920-DDC79E66F65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498F8020-9B22-4F6B-8920-DDC79E66F65F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5875AE3-E23B-45D4-996B-4F7A4B9D82FF}
+	EndGlobalSection
+EndGlobal
