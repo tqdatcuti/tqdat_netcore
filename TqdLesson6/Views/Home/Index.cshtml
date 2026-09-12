@@ -1,0 +1,37 @@
+﻿@model IReadOnlyList<TqdLesson6.ViewModels.ProductViewModel>
+@{
+    ViewData["Title"] = "Điện Máy Xanh";
+}
+
+<div class="shop-layout">
+    <aside class="sidebar-column">
+        @await Html.PartialAsync("_CategoryMenu")
+        <a class="promo-banner" href="#hot-products" aria-label="Xem khuyến mãi nổi bật">
+            <span class="promo-kicker">ĐỔI CŨ</span>
+            <strong>MUA MỚI</strong>
+            <span class="promo-copy">Lên đời nồi cơm<br />thông minh hơn</span>
+            <span class="promo-price">chỉ từ 2.850.000đ</span>
+            <span class="promo-badge">ĐỔI NGAY</span>
+            <span class="promo-pot" aria-hidden="true">🍚</span>
+        </a>
+    </aside>
+    <main class="catalog-column">
+        <section class="product-section" aria-labelledby="latest-products-title">
+            <h1 id="latest-products-title" class="section-title">Sản phẩm mới nhất</h1>
+            <div class="product-grid">
+                @foreach (var product in Model)
+                {
+                    <article class="product-card">
+                        <img src="@product.ImageUrl" alt="@product.Name" />
+                        <h2>@product.Name</h2>
+                        <p class="product-price">@product.Price.ToString("N0") đ</p>
+                    </article>
+                }
+            </div>
+        </section>
+        <section id="hot-products" class="product-section hot-section" aria-labelledby="hot-products-title">
+            <h2 id="hot-products-title" class="section-title">Sản phẩm bán chạy</h2>
+            @await Component.InvokeAsync("HotProduct")
+        </section>
+    </main>
+</div>

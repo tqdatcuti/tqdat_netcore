@@ -1,0 +1,12 @@
+@model IReadOnlyList<TqdLesson6.ViewModels.ProductViewModel>
+
+<div class="product-grid">
+    @foreach (var product in Model)
+    {
+        <article class="product-card">
+            <img src="@product.ImageUrl" alt="@product.Name" />
+            <h3>@product.Name</h3>
+            <p class="product-price">@product.Price.ToString("N0") đ</p>
+        </article>
+    }
+</div>
