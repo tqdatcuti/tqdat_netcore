@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<section class="home-intro">
+    <div class="home-copy">
+        <p class="eyebrow">TONG QUANG DAT <span>·</span> 2410900022</p>
+        <h1>Quản lý<br /><span>hồ sơ sinh viên.</span></h1>
+        <p class="intro-text">Theo dõi thông tin sinh viên trong một danh sách gọn gàng, dễ cập nhật.</p>
+        <a class="btn btn-primary btn-lg" asp-controller="TqdStudents" asp-action="Index">Mở danh sách <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="home-aside">
+        <span class="aside-index">01 / MVC</span>
+        <h2>Student<br />directory</h2>
+        <p>Ứng dụng quản lý sinh viên kết nối MySQL, xây dựng với ASP.NET Core MVC.</p>
+        <a asp-controller="Home" asp-action="TqdAbout">Thông tin sinh viên <span aria-hidden="true">&rarr;</span></a>
+    </div>
+</section>
+
+<section class="home-bottom" aria-label="Thông tin ứng dụng">
+    <span>01 <strong>Danh sách</strong></span>
+    <span>02 <strong>Thêm mới</strong></span>
+    <span>03 <strong>Chỉnh sửa</strong></span>
+    <span>04 <strong>Chi tiết &amp; xóa</strong></span>
+</section>
+</div>

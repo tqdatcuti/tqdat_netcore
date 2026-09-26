@@ -1,0 +1,56 @@
+@model TongQuangDat2410900022_exam.Models.TqdStudent
+
+@{
+    ViewData["Title"] = "Thêm sinh viên";
+}
+
+<div class="page-heading">
+    <div><p class="eyebrow">HỒ SƠ SINH VIÊN <span>·</span> NEW</p><h1>Thêm sinh viên</h1></div>
+</div>
+<form asp-action="Create" class="student-form">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="TqdName" class="form-label"></label>
+            <input asp-for="TqdName" class="form-control" />
+            <span asp-validation-for="TqdName" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TqdGender" class="form-label"></label>
+            <select asp-for="TqdGender" class="form-select">
+                <option value="">Chọn giới tính</option>
+                <option value="Nam">Nam</option><option value="Nữ">Nữ</option><option value="Khác">Khác</option>
+            </select>
+            <span asp-validation-for="TqdGender" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TqdBirthDay" class="form-label"></label>
+            <input asp-for="TqdBirthDay" type="date" min="1000-01-01" max="9999-12-31" class="form-control" />
+            <span asp-validation-for="TqdBirthDay" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TqdEmail" class="form-label"></label>
+            <input asp-for="TqdEmail" class="form-control" />
+            <span asp-validation-for="TqdEmail" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TqdPhone" class="form-label"></label>
+            <input asp-for="TqdPhone" class="form-control" />
+            <span asp-validation-for="TqdPhone" class="text-danger"></span>
+        </div>
+        <div class="col-12">
+            <div class="form-check mt-2">
+                <input asp-for="TqdActive" class="form-check-input" />
+                <label asp-for="TqdActive" class="form-check-label"></label>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="btn btn-primary">Lưu sinh viên</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Quay lại danh sách</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

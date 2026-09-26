@@ -1,0 +1,53 @@
+@model TongQuangDat2410900022_exam.Models.TqdStudent
+
+@{
+    ViewData["Title"] = "Chi tiết sinh viên";
+}
+
+<div class="page-heading">
+    <div><p class="eyebrow">HỒ SƠ SINH VIÊN <span>·</span> DETAILS</p><h1>Chi tiết sinh viên</h1></div>
+</div>
+<section class="student-form">
+    <dl class="row mb-0">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TqdName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TqdName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TqdGender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TqdGender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TqdBirthDay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.TqdBirthDay.ToString("dd/MM/yyyy")
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TqdEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TqdEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TqdPhone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TqdPhone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TqdActive)
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.TqdActive ? "Đang học" : "Đã nghỉ")
+        </dd>
+    </dl>
+</section>
+<div class="d-flex gap-3 mt-3">
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Chỉnh sửa</a>
+    <a class="btn btn-outline-secondary" asp-action="Index">Quay lại danh sách</a>
+</div>
