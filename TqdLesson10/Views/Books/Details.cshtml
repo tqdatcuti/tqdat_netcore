@@ -1,0 +1,4 @@
+@model TqdLesson10.Models.Book
+@{ ViewData["Title"] = "Chi tiết sách"; }
+<div class="d-flex justify-content-between align-items-center mb-4"><h1 class="h2">@Model.Title</h1><a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a></div>
+<div class="card shadow-sm"><div class="card-body"><dl class="row mb-0"><dt class="col-sm-3">Tác giả</dt><dd class="col-sm-9">@Model.Author</dd><dt class="col-sm-3">Danh mục</dt><dd class="col-sm-9">@Model.Category?.CategoryName</dd><dt class="col-sm-3">Nhà xuất bản</dt><dd class="col-sm-9">@Model.Publisher?.PublisherName</dd><dt class="col-sm-3">Giá</dt><dd class="col-sm-9">@Model.Price.ToString("N0") đ</dd><dt class="col-sm-3">Năm phát hành</dt><dd class="col-sm-9">@Model.ReleaseYear</dd><dt class="col-sm-3">Mô tả</dt><dd class="col-sm-9">@Model.Description</dd></dl></div></div>

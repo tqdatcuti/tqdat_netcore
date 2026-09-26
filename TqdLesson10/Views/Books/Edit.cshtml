@@ -1,0 +1,5 @@
+@model TqdLesson10.Models.Book
+@{ ViewData["Title"] = "Sửa sách"; }
+<h1 class="h2 mb-4">Sửa sách</h1>
+<form asp-action="Edit" class="card card-body shadow-sm"><input type="hidden" asp-for="BookId" />@await Html.PartialAsync("_Form", Model)<div class="mt-4"><button class="btn btn-primary">Cập nhật</button> <a asp-action="Index" class="btn btn-outline-secondary">Quay lại</a></div></form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
