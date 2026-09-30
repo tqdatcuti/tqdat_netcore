@@ -1,0 +1,44 @@
+@model IEnumerable<TqdLesson12.Models.Banner>
+@{
+    ViewData["Title"] = "Banner";
+}
+
+<section class="page-heading">
+    <div><p class="eyebrow">CATALOG / 03</p><h1>Banner</h1><p>Banner trạng thái hiển thị sẽ xuất hiện trên trang chủ.</p></div>
+    <a class="btn btn-dark" asp-action="Create">Thêm banner</a>
+</section>
+
+<div class="table-responsive data-table">
+    <table class="table table-hover align-middle mb-0">
+        <thead><tr><th>Ảnh</th><th>Tên banner</th><th>Mô tả</th><th>Trạng thái</th><th>Ngày tạo</th><th></th></tr></thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(item.Image))
+                    {
+                        <img src="@item.Image" alt="@item.Name" class="table-thumb" />
+                    }
+                    else
+                    {
+                        <span class="text-secondary">—</span>
+                    }
+                </td>
+                <td class="fw-semibold">@item.Name</td>
+                <td>@item.Description</td>
+                <td>@(item.Status == 1 ? "Hiển thị" : "Ẩn")</td>
+                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                <td class="text-end text-nowrap">
+                    <a class="btn btn-sm btn-outline-dark" asp-action="Edit" asp-route-id="@item.Id">Sửa</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr><td colspan="6" class="text-center text-secondary py-5">Chưa có banner nào.</td></tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,16 @@
+@model TqdLesson12.Models.Category
+@{
+    ViewData["Title"] = "Xóa danh mục";
+}
+<section class="page-heading"><div><p class="eyebrow">CATALOG / 01</p><h1>Xóa danh mục</h1></div></section>
+<div class="form-panel">
+    <p>Bạn có chắc muốn xóa danh mục <strong>@Model.Name</strong>?</p>
+    @if (Model.Products.Count > 0)
+    {
+        <p class="text-danger">Danh mục đang có @Model.Products.Count sản phẩm và không thể xóa.</p>
+    }
+    <form asp-action="Delete" asp-route-id="@Model.Id" class="d-flex gap-2">
+        <button class="btn btn-danger" type="submit" disabled="@(Model.Products.Count > 0)">Xóa danh mục</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Quay lại</a>
+    </form>
+</div>

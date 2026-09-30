@@ -1,0 +1,81 @@
+@model TqdLesson12.ViewModels.CatalogHomeViewModel
+@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<section class="home-intro">
+    <div>
+        <p class="eyebrow">THỰC HÀNH ENTITY FRAMEWORK CORE</p>
+        <h1>Quản lý cửa hàng</h1>
+    </div>
+    <a class="btn btn-dark" asp-controller="Products" asp-action="Create">Thêm sản phẩm</a>
+</section>
+
+@if (Model.Banners.Count > 0)
+{
+    <section class="banner-strip" aria-label="Banner">
+        @foreach (var banner in Model.Banners)
+        {
+            <article class="banner-item">
+                @if (!string.IsNullOrWhiteSpace(banner.Image))
+                {
+                    <img src="@banner.Image" alt="@banner.Name" />
+                }
+                <div class="banner-copy">
+                    <span>ĐANG HIỂN THỊ</span>
+                    <h2>@banner.Name</h2>
+                    <p>@banner.Description</p>
+                </div>
+            </article>
+        }
+    </section>
+}
+
+<section class="section-heading">
+    <div>
+        <p class="eyebrow">DỮ LIỆU MỚI NHẤT</p>
+        <h2>Sản phẩm</h2>
+    </div>
+    <a asp-controller="Products" asp-action="Index">Quản lý sản phẩm <span aria-hidden="true">→</span></a>
+</section>
+
+@if (Model.Products.Count == 0)
+{
+    <div class="empty-state">
+        <h3>Chưa có sản phẩm</h3>
+        <p>Thêm danh mục trước, sau đó tạo sản phẩm để hiển thị tại đây.</p>
+        <a class="btn btn-outline-dark" asp-controller="Categories" asp-action="Index">Quản lý danh mục</a>
+    </div>
+}
+else
+{
+    <div class="product-grid">
+        @foreach (var product in Model.Products)
+        {
+            <article class="product-tile">
+                <div class="product-image">
+                    @if (!string.IsNullOrWhiteSpace(product.Image))
+                    {
+                        <img src="@product.Image" alt="@product.Name" />
+                    }
+                    else
+                    {
+                        <span>Chưa có ảnh</span>
+                    }
+                </div>
+                <div class="product-info">
+                    <span class="product-category">@product.Category?.Name</span>
+                    <h3>@product.Name</h3>
+                    <p>@product.Price.ToString("N0") đ</p>
+                </div>
+            </article>
+        }
+    </div>
+}
+
+<section class="management-links">
+    <a asp-controller="Categories" asp-action="Index"><span>01</span> Danh mục</a>
+    <a asp-controller="Products" asp-action="Index"><span>02</span> Sản phẩm</a>
+    <a asp-controller="Banners" asp-action="Index"><span>03</span> Banner</a>
+    <a asp-controller="StudentManager" asp-action="Index"><span>04</span> StudentManager</a>
+</section>

@@ -1,0 +1,11 @@
+@model TqdLesson12.Models.Category
+@{
+    ViewData["Title"] = "Thêm danh mục";
+}
+<section class="page-heading"><div><p class="eyebrow">CATALOG / 01</p><h1>Thêm danh mục</h1></div></section>
+<form asp-action="Create" class="form-panel">
+    <partial name="_Form" model="Model" />
+    <div class="d-flex gap-2"><button class="btn btn-dark" type="submit">Lưu danh mục</button><a class="btn btn-outline-secondary" asp-action="Index">Hủy</a></div>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

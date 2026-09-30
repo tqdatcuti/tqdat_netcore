@@ -1,0 +1,286 @@
+:root {
+  --lesson-ink: #20231e;
+  --lesson-muted: #73786e;
+  --lesson-paper: #f4f5ef;
+  --lesson-line: #dfe2d8;
+  --lesson-lime: #d9f06a;
+  --lesson-red: #e55d43;
+}
+
+body {
+  background: var(--lesson-paper);
+  color: var(--lesson-ink);
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+.navbar {
+  min-height: 64px;
+}
+
+.navbar-brand {
+  letter-spacing: .08em;
+}
+
+.nav-link {
+  color: var(--lesson-ink);
+}
+
+.home-intro,
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 36px 0 28px;
+}
+
+.home-intro h1,
+.section-heading h2,
+.banner-copy h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+}
+
+.home-intro h1 {
+  font-size: 42px;
+}
+
+.eyebrow,
+.banner-copy > span {
+  margin: 0 0 8px;
+  color: var(--lesson-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.banner-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.banner-item {
+  position: relative;
+  min-height: 190px;
+  overflow: hidden;
+  background: var(--lesson-ink);
+  color: white;
+}
+
+.banner-item img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .42;
+}
+
+.banner-copy {
+  position: relative;
+  padding: 26px;
+}
+
+.banner-copy > span {
+  color: var(--lesson-lime);
+}
+
+.banner-copy h2 {
+  font-size: 26px;
+}
+
+.banner-copy p {
+  max-width: 38ch;
+  margin: 8px 0 0;
+}
+
+.section-heading {
+  margin-top: 48px;
+}
+
+.section-heading h2 {
+  font-size: 30px;
+}
+
+.section-heading > a {
+  color: var(--lesson-ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.product-tile {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--lesson-line);
+}
+
+.product-image {
+  display: grid;
+  aspect-ratio: 4 / 3;
+  place-items: center;
+  background: #e7e9e0;
+  color: var(--lesson-muted);
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 14px;
+}
+
+.product-category {
+  color: var(--lesson-muted);
+  font-size: 12px;
+}
+
+.product-info h3 {
+  margin: 5px 0 8px;
+  font-size: 17px;
+}
+
+.product-info p {
+  margin: 0;
+  color: #354a14;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 34px;
+  border: 1px dashed #b9beb0;
+  background: #fff;
+}
+
+.management-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 50px;
+  border-top: 1px solid var(--lesson-line);
+}
+
+.management-links a {
+  display: flex;
+  gap: 12px;
+  padding: 18px 12px;
+  border-bottom: 1px solid var(--lesson-line);
+  color: var(--lesson-ink);
+  text-decoration: none;
+}
+
+.management-links a span {
+  color: var(--lesson-red);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.page-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 30px 0 24px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+}
+
+.page-heading p {
+  margin: 5px 0 0;
+  color: var(--lesson-muted);
+}
+
+.data-table {
+  background: #fff;
+  border: 1px solid var(--lesson-line);
+}
+
+.data-table th {
+  color: var(--lesson-muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form-panel {
+  max-width: 760px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--lesson-line);
+}
+
+.form-label {
+  font-weight: 600;
+}
+
+.image-preview {
+  display: block;
+  max-width: 180px;
+  max-height: 120px;
+  margin: 8px 0;
+  object-fit: cover;
+}
+
+.table-thumb {
+  width: 56px;
+  height: 44px;
+  object-fit: cover;
+}
+
+.student-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.student-section {
+  margin: 34px 0;
+}
+
+.student-section h2 {
+  margin-bottom: 16px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+}
+
+.inline-form {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  min-width: 440px;
+}
+
+.inline-form .form-control,
+.inline-form .form-select {
+  min-width: 110px;
+}
+
+@media (max-width: 640px) {
+  .home-intro,
+  .section-heading,
+  .page-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .home-intro h1 {
+    font-size: 34px;
+  }
+
+  .management-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

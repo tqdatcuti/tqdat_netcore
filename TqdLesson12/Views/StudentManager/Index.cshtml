@@ -1,0 +1,143 @@
+@model TqdLesson12.ViewModels.StudentManagerViewModel
+@{
+    ViewData["Title"] = "StudentManager";
+}
+
+<section class="page-heading">
+    <div><p class="eyebrow">CODE FIRST / 02</p><h1>StudentManager</h1><p>Quản lý lớp, học viên, môn học và điểm số.</p></div>
+    <span class="badge text-bg-dark">@Model.Students.Count học viên</span>
+</section>
+
+<section class="student-section" id="classes">
+    <h2>01 / Lớp học</h2>
+    <form asp-action="SaveClass" class="inline-form mb-3">
+        <input type="hidden" name="Id" value="@(Model.EditingClass?.Id ?? 0)" />
+        <div class="flex-grow-1">
+            <label class="form-label" for="className">Tên lớp</label>
+            <input id="className" name="ClassName" value="@Model.EditingClass?.ClassName" class="form-control" maxlength="100" required />
+        </div>
+        <button class="btn btn-dark" type="submit">@(Model.EditingClass is null ? "Thêm lớp" : "Lưu lớp")</button>
+        @if (Model.EditingClass is not null) { <a class="btn btn-outline-secondary" asp-action="Index">Hủy</a> }
+    </form>
+    <div class="table-responsive data-table">
+        <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Tên lớp</th><th>Sĩ số</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.Classes)
+            {
+                <tr>
+                    <td class="fw-semibold">@item.ClassName</td><td>@item.Students.Count</td>
+                    <td class="text-end text-nowrap">
+                        <a class="btn btn-sm btn-outline-dark" asp-action="Index" asp-route-editClassId="@item.Id" asp-fragment="classes">Sửa</a>
+                        <form asp-action="DeleteClass" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button class="btn btn-sm btn-outline-danger" type="submit">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            @if (Model.Classes.Count == 0) { <tr><td colspan="3" class="text-center text-secondary py-4">Chưa có lớp học.</td></tr> }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="student-section" id="students">
+    <h2>02 / Học viên</h2>
+    <form asp-action="SaveStudent" enctype="multipart/form-data" class="form-panel mb-3">
+        <input type="hidden" name="Id" value="@(Model.EditingStudent?.Id ?? 0)" />
+        <div class="row">
+            <div class="col-md-6 mb-3"><label class="form-label" for="studentName">Họ tên</label><input id="studentName" name="StudentName" value="@Model.EditingStudent?.StudentName" class="form-control" maxlength="100" required /></div>
+            <div class="col-md-6 mb-3"><label class="form-label" for="studentEmail">Email</label><input id="studentEmail" name="StudentEmail" type="email" value="@Model.EditingStudent?.StudentEmail" class="form-control" maxlength="100" required /></div>
+            <div class="col-md-6 mb-3"><label class="form-label" for="studentPhone">Điện thoại</label><input id="studentPhone" name="StudentPhone" value="@Model.EditingStudent?.StudentPhone" class="form-control" maxlength="50" required /></div>
+            <div class="col-md-6 mb-3"><label class="form-label" for="studentAddress">Địa chỉ</label><input id="studentAddress" name="StudentAddress" value="@Model.EditingStudent?.StudentAddress" class="form-control" maxlength="150" required /></div>
+            <div class="col-md-6 mb-3"><label class="form-label" for="studentBirthday">Ngày sinh</label><input id="studentBirthday" name="StudentBirthday" type="date" value="@(Model.EditingStudent?.StudentBirthday.ToString("yyyy-MM-dd"))" class="form-control" required /></div>
+            <div class="col-md-6 mb-3"><label class="form-label" for="classId">Lớp</label><select id="classId" name="ClassId" asp-items="ViewBag.Classes" class="form-select" required><option value="">Chọn lớp học</option></select></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="avatarFile">Ảnh đại diện</label>
+            <input id="avatarFile" name="avatarFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif" class="form-control" />
+            @if (!string.IsNullOrWhiteSpace(Model.EditingStudent?.StudentAvatar))
+            {
+                <img src="@Model.EditingStudent.StudentAvatar" alt="Ảnh học viên" class="image-preview" />
+            }
+        </div>
+        <button class="btn btn-dark" type="submit">@(Model.EditingStudent is null ? "Thêm học viên" : "Lưu học viên")</button>
+        @if (Model.EditingStudent is not null) { <a class="btn btn-outline-secondary" asp-action="Index">Hủy</a> }
+    </form>
+    <div class="table-responsive data-table">
+        <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Học viên</th><th>Email / Điện thoại</th><th>Lớp</th><th>Ngày sinh</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td><div class="d-flex align-items-center gap-2">
+                        @if (!string.IsNullOrWhiteSpace(item.StudentAvatar)) { <img src="@item.StudentAvatar" alt="" class="student-thumb" /> }
+                        <strong>@item.StudentName</strong>
+                    </div></td>
+                    <td>@item.StudentEmail<div class="small text-secondary">@item.StudentPhone</div></td><td>@item.Class?.ClassName</td><td>@item.StudentBirthday.ToString("dd/MM/yyyy")</td>
+                    <td class="text-end text-nowrap">
+                        <a class="btn btn-sm btn-outline-dark" asp-action="Index" asp-route-editStudentId="@item.Id" asp-fragment="students">Sửa</a>
+                        <form asp-action="DeleteStudent" method="post" class="d-inline"><input type="hidden" name="id" value="@item.Id" /><button class="btn btn-sm btn-outline-danger" type="submit">Xóa</button></form>
+                    </td>
+                </tr>
+            }
+            @if (Model.Students.Count == 0) { <tr><td colspan="5" class="text-center text-secondary py-4">Chưa có học viên.</td></tr> }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="student-section" id="subjects">
+    <h2>03 / Môn học</h2>
+    <form asp-action="SaveSubject" class="inline-form mb-3">
+        <input type="hidden" name="Id" value="@(Model.EditingSubject?.Id ?? 0)" />
+        <div class="flex-grow-1"><label class="form-label" for="subjectName">Tên môn học</label><input id="subjectName" name="SubjectName" value="@Model.EditingSubject?.SubjectName" class="form-control" maxlength="100" required /></div>
+        <button class="btn btn-dark" type="submit">@(Model.EditingSubject is null ? "Thêm môn" : "Lưu môn")</button>
+        @if (Model.EditingSubject is not null) { <a class="btn btn-outline-secondary" asp-action="Index">Hủy</a> }
+    </form>
+    <div class="table-responsive data-table">
+        <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Tên môn học</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.Subjects)
+            {
+                <tr><td class="fw-semibold">@item.SubjectName</td><td class="text-end">
+                    <a class="btn btn-sm btn-outline-dark" asp-action="Index" asp-route-editSubjectId="@item.Id" asp-fragment="subjects">Sửa</a>
+                    <form asp-action="DeleteSubject" method="post" class="d-inline"><input type="hidden" name="id" value="@item.Id" /><button class="btn btn-sm btn-outline-danger" type="submit">Xóa</button></form>
+                </td></tr>
+            }
+            @if (Model.Subjects.Count == 0) { <tr><td colspan="2" class="text-center text-secondary py-4">Chưa có môn học.</td></tr> }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="student-section" id="marks">
+    <h2>04 / Bảng điểm</h2>
+    <form asp-action="SaveMark" class="inline-form mb-3">
+        <input type="hidden" name="originalStudentId" value="@(Model.EditingMark?.StudentId ?? 0)" />
+        <input type="hidden" name="originalSubjectId" value="@(Model.EditingMark?.SubjectId ?? 0)" />
+        <div><label class="form-label" for="markStudent">Học viên</label><select id="markStudent" name="StudentId" asp-items="ViewBag.Students" class="form-select" required><option value="">Chọn học viên</option></select></div>
+        <div><label class="form-label" for="markSubject">Môn học</label><select id="markSubject" name="SubjectId" asp-items="ViewBag.Subjects" class="form-select" required><option value="">Chọn môn học</option></select></div>
+        <div><label class="form-label" for="score">Điểm / 10</label><input id="score" name="Score" type="number" min="0" max="10" step="0.1" value="@Model.EditingMark?.Score" class="form-control" required /></div>
+        <button class="btn btn-dark" type="submit">@(Model.EditingMark is null ? "Thêm điểm" : "Lưu điểm")</button>
+        @if (Model.EditingMark is not null) { <a class="btn btn-outline-secondary" asp-action="Index">Hủy</a> }
+    </form>
+    <div class="table-responsive data-table">
+        <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Học viên</th><th>Môn học</th><th>Điểm</th><th></th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.Marks)
+            {
+                <tr><td>@item.Student?.StudentName</td><td>@item.Subject?.SubjectName</td><td class="fw-semibold">@item.Score.ToString("0.##")</td><td class="text-end text-nowrap">
+                    <a class="btn btn-sm btn-outline-dark" asp-action="Index" asp-route-editStudentMarkStudentId="@item.StudentId" asp-route-editStudentMarkSubjectId="@item.SubjectId" asp-fragment="marks">Sửa</a>
+                    <form asp-action="DeleteMark" method="post" class="d-inline"><input type="hidden" name="studentId" value="@item.StudentId" /><input type="hidden" name="subjectId" value="@item.SubjectId" /><button class="btn btn-sm btn-outline-danger" type="submit">Xóa</button></form>
+                </td></tr>
+            }
+            @if (Model.Marks.Count == 0) { <tr><td colspan="4" class="text-center text-secondary py-4">Chưa có điểm.</td></tr> }
+            </tbody>
+        </table>
+    </div>
+</section>

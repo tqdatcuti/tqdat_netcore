@@ -1,0 +1,7 @@
+IF DB_ID(N'NetCoreCRUD') IS NULL
+    CREATE DATABASE NetCoreCRUD;
+GO
+
+IF DB_ID(N'StudentManager') IS NULL
+    CREATE DATABASE StudentManager;
+GO

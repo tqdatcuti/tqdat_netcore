@@ -1,0 +1,16 @@
+@model TqdLesson12.Models.Product
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+<section class="page-heading"><div><p class="eyebrow">CATALOG / 02</p><h1>Xóa sản phẩm</h1></div></section>
+<div class="form-panel">
+    @if (!string.IsNullOrWhiteSpace(Model.Image))
+    {
+        <img src="@Model.Image" alt="@Model.Name" class="image-preview" />
+    }
+    <p>Bạn có chắc muốn xóa sản phẩm <strong>@Model.Name</strong>?</p>
+    <form asp-action="Delete" asp-route-id="@Model.Id" class="d-flex gap-2">
+        <button class="btn btn-danger" type="submit">Xóa sản phẩm</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Quay lại</a>
+    </form>
+</div>

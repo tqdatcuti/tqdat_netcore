@@ -1,0 +1,11 @@
+@model TqdLesson12.Models.Banner
+@{
+    ViewData["Title"] = "Thêm banner";
+}
+<section class="page-heading"><div><p class="eyebrow">CATALOG / 03</p><h1>Thêm banner</h1></div></section>
+<form asp-action="Create" enctype="multipart/form-data" class="form-panel">
+    <partial name="_Form" model="Model" />
+    <div class="d-flex gap-2"><button class="btn btn-dark" type="submit">Lưu banner</button><a class="btn btn-outline-secondary" asp-action="Index">Hủy</a></div>
+</form>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

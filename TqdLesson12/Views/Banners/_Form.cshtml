@@ -1,0 +1,26 @@
+@model TqdLesson12.Models.Banner
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Status" class="form-label"></label>
+    <select asp-for="Status" class="form-select"><option value="1">Hiển thị</option><option value="0">Ẩn</option></select>
+</div>
+<div class="mb-3">
+    <label class="form-label" for="imageFile">Ảnh banner</label>
+    <input class="form-control" type="file" id="imageFile" name="imageFile" accept="image/jpeg,image/png,image/webp,image/gif" />
+    <span class="text-danger">@Html.ValidationMessage("imageFile")</span>
+    @if (!string.IsNullOrWhiteSpace(Model.Image))
+    {
+        <img src="@Model.Image" alt="Ảnh hiện tại" class="image-preview" />
+    }
+</div>
