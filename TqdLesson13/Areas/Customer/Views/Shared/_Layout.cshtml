@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Layout Customer</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="customer-layout">
+    <header class="site-header">
+        <div class="site-header-content">
+            <a class="site-brand" asp-area="Customer" asp-controller="Store" asp-action="Index">TRANG KHÁCH HÀNG</a>
+            <nav class="site-nav" aria-label="Điều hướng khách hàng">
+                <a asp-area="Customer" asp-controller="Store" asp-action="Index">Trang chủ</a>
+                <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Trang quản trị</a>
+            </nav>
+        </div>
+    </header>
+    <main class="site-content">
+        @RenderBody()
+    </main>
+    <footer class="site-footer">Bố cục trang khách hàng (Customer)</footer>
+</body>
+</html>
